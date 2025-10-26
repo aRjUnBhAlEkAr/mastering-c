@@ -1,0 +1,50 @@
+* Function :
+        The Function is a block of code which perform purticular task.
+
+  Syntax :
+        return_type function_name(data_type parameter)
+        {
+            // code to be executed.
+        }
+
+* Function aspects :
+    There are three aspects of a C function :
+    a. Function declaration or Function prototype.
+    b. Function call.
+    c. Function defination.
+  
+  Syntax :
+        #include<stdio.h>
+        vaid display(); --> Function declaration or function prototype.
+
+        int main()
+        {
+            int variable;
+            display();  --> Function Call.
+            return 0;
+        }
+
+        void display()  --> Function Defination.
+        {
+            // code to be executed .
+        }
+
+* Different aspects of function calling.
+    a. Function without arguments and without return type.
+    b. Function without arguments and with return type.
+    c. Function with arguments and without return type.
+    d. Function with arguments and with return type.
+
+* Call by value and Call by Reference.
+    a. Call by Value.
+    b. Call by Reference.
+
+* Recursion.
+    a. Recursion method.
+    b. Recursive call.
+
+* Storage classes
+    a. Automatic.
+    b. External.
+    c. Static.
+    d. Register.

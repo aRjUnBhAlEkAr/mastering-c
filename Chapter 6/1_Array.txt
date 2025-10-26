@@ -1,0 +1,107 @@
+** Array :-
+        a. An array is defined as collection of similar type of data or datatype.
+        b. Item stored at the contiguous memory locations.
+        c. Array are the derived data type in C programming language which can store 
+           the Primitive type of data such as int, char, float, double etc.
+        d. It also has the capability to store the collection of derived data types,
+           such as pointer, structure, etc.
+
+Example 1 :-
+
+#include<stdio.h>   //Preprocessor
+
+int main(){         // Main function begins.
+    int array[5];   // declaration of array type of integer.
+    array[0] = 80;  // intializing array of 0.
+    array[1] = 60;  // intializing array of 1.
+    array[2] = 70;  // intializing array of 2.
+    array[3] = 85;  // intializing array of 3.
+    array[4] = 75;  // intializing array of 4.
+
+    // how data stores at the arrays index.
+    |    80    |    60    |    70    |    85    |    75    |
+     array[0]    array[1]   array[2]   array[3]   array[4]
+    
+    for(int i = 0; i<5 ; i++)
+    {
+        printf("array of %d is %d\n", i, array[i]); //printing array using its index.
+    }
+    return 0;
+}
+
+** 2D Array :-
+        a. The Two Dimentional Array(2D Array) can be defined as an array of array.
+        b. The 2D array is organized as matrices of rows and columns. 
+        c. However 2D array are created to implement a relational database looklike data structure.
+        d. It provides ease of holding the bulk of data at once which can be passed to any
+           number of function whenever required.
+        
+Example 1 :-
+
+#include<stdio.h>
+
+int main(){
+    int array[4][3] = {{10,20,30},{20,30,40},{30,40,50},{40,50,60}};
+
+    //traversing 2D Array.
+    for(int i = 0; i < 4; i++)  // this loop for ROWS.
+    {
+        for(int j = 0; j < 3; j++)  // this loop for COLUMNS.
+        {
+            printf("array[%d][%d] = %d\t", i, j, array[i][j]);
+        }   // end of j
+        printf("\n");
+    }   // end of i
+    return 0;
+}
+
+** Return an Array :
+
+// Example 1 : How to Return pointer pointing to the Array.
+
+#include<stdio.h>
+
+int *returnArray()
+{
+    int array[5];    // local to the returnArray() funtion.
+    printf("Enter the Elements in array :\n");
+    for(int i = 0; i < 5; i++)
+    {
+        scanf("%d", &array[i]);
+    }
+    return array;
+}
+
+int main(){
+    int *n;
+    n = returnArray();
+
+    printf("\nElements of array are : ");
+    for(int i = 0; i < 5; i++)
+    {
+        printf("%d\t", n[i]);
+    }
+    return 0;
+}
+
+// output of the program is segmentation fault.
+
+# There are three right ways to returning an array to a function.
+        a) using Dynamically allocated array.   --> Practical 12, Practical 13.
+        b) using static array.                  --> Practical 14.
+        c) using structure.                     --> Practical 15.
+
+** Passing Array to Function.
+ - syntax to pass an Array to the function :
+        function_name(array_name);  // passing array.   
+
+ # Methods to declare a function that receives an array as an argument.
+    - There are 3 ways to declare the function.
+        First way : return_type function_name(type array_name[]);
+                    declaring blank subscript notation [] is widely used technique.
+
+        Second way : return_type function_name(type array_name[size]);
+                    Optionally, we can define size in subscript notation [].
+        
+        Third way : return_type function_name(type *array_name);
+                    we can also use concept of pointer.

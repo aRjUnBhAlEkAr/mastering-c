@@ -1,0 +1,270 @@
+** Pointer : -
+        - Pointer is variable which stores address of another variable.
+        - The varible can be int, float, char, array, function or any other Pointer.
+        - The size of Pointer is depend on the architecture.
+          However, in 32 bit architecture the size of pointer is 2 byte.
+        - The Pointer in C language can be declared using * (asterisk symbol).
+          It is also known as indirection operator.
+          it is used to dereference a pointer.
+
+  * Declaration of pointer : -
+        int *a;     //pointer to int.
+        int *b;
+        char *c;    //pointer to char.
+
+    #include<stdio.h>
+
+    int main(){
+        int n = 10;
+        int *ptr = &n;  // variable ptr of type pointer is pointing to the address of the variable n of the type integer.
+        return 0;
+    }
+
+** NULL Pointer :-
+        - A pointer that is not assigned any value but NULL known as NULL pointer.
+        - A NULL pointer is a pointer that does not points to any object or function.
+        - If we don't have any value at the time of declaration, we can assign NULL value.
+  Syntax :
+          data_type *variable_name = NULL;
+      Example : int *ptr = NULL;
+
+** Reading complex pointers :-
+    There are several things which must be taken into the consideration while 
+    reading the complex pointers in C.
+
+    Operator      Precedence        Associativity
+  -------------------------------------------------
+    (), []            1             Left to Right
+    *, identifier     2             Right to Left
+    Data type         3             -
+
+  o () : This operator is a bracket operator used to declare and define the function.
+  o [] : This operator is an array subscript operator.
+  o *  : This operator is a pointer operator.
+  o Identifier : It is the name of the pointer.
+          The priority will always be assigned to this.
+  o Data Type : Data type is the type of the variable to which the pointer is intended to point.
+          It also includes the modifier (like signed int, long, etc).
+
+  - How to read the pointer : int (*p)[10]  --> p is pointer to an array of integer size of 10.
+    Example : int(*p)(int(*)[2], int (*)void) --> p is pointer to such function which has first parameter pointer 
+                                                  to an array of integer size of two and second parameter as pointer
+                                                  to parameter is integer and return type is integer.
+  
+** Pointer Arithmetic :
+ - We can perform arithmetic operation on the pointer like addition, substraction, etc.
+   However as we know that pointer cantains the address. The result of an arithmetic operation
+   performed on the pointer will also be a pointer if the other oprand is of type of integer.
+ - In pointer-from-pointer substraction, the result will be an integer value.
+
+ * Arithmetic Operation are possible on the pointer in C language.
+    a. Increament.
+    b. Decreament.
+    c. Addition.
+    d. Substraction.
+    e. Comparison.
+
+  a) Increament Pointer :-
+    - If we increment a pointer by 1, the pointer will start pointing to the immediate next location.
+    - This is somewhat different from the general arithmetic since the value of the pointer will get
+      increased by the size of the data type to which the pointer is pointing.
+    - We can traverse an array by using the increament operation on a pointer which will keep pointing
+      to every element of the array, and update itself on the loop.
+    - for 32-bit int variable, it will be increamented by 2.
+      for 64-bit int variable, it will be increamented by 4.
+
+   Syntax : new_address = current_address + i * sizeof(data_type)
+            p = p + 1;
+   Example : Practical_7, Practical_8 and Practical_9.
+
+  b) Decrementing Pointer :-
+   - Like increament, we can decrement a pointer variable.
+   - If we decrement a pointer, it will start pointing to the previous location.
+   - for 32-bit int variable, it will be decremented by 2.
+     for 64-bit int variable, it will be decremented by 4.
+
+   Syntax : new_address = current_address - i * sizeof(data_type)
+            p = p - 1;
+   Example : Practical_10.
+
+  c) Pointer Addition :-
+   - In the Pointer Addition, we can add value respectivily address and data_type of the pointer variable.
+   - for 32-bit int variable, it will add number * 2.
+     for 64-bit int variable, it will add number * 4.
+   Syntax : new_address = current_address + number * sizeof(data_type)
+   Example : Practical_11
+
+  d) Pointer Substraction :-
+   - The Pointer Substraction can substract value respectivily address and data_type of the pointer variable.
+   - for 32-bit int variable, it will substract number * 2.
+     for 64-bit int variable, it will substract number * 4.
+
+   Syntax : new_address = current_address - number * sizeof(data_type)
+   Example : Practical_12.
+
+ * Illegal arithmetic with pointers :-
+  - There is various operations which can not be performed on pointers.
+    since, pointer stores address hence we must ignore the operation which
+    may lead to an illegal address, for exaple, addition, multiplication.
+      o Address + Address = illegal
+      o Address * Address = illegal
+      o Address % Address = illegal
+      o Address / Address = illegal
+      o Address & Address = illegal
+      o Address ^ Address = illegal
+      o Address | Address = illegal
+      o Address ~ Address = illegal
+
+  * Pointer to function :-
+    - A pointer can point to a function.
+    - The declaration of pointer variable must be the same as the function.
+  
+   Syntax : return_type (*pointer_variable)(data_type) = &function_name
+   Example : int (*p)(int) = &show();
+  Example : Practical_14.
+
+  * Pointer to array to function :-
+   - An array of the function is an array which contains the addresses of the functions.
+   - The pointer pointing to an array which contains the pointers to the functions.
+
+   Syntax : array_variable[index_number] = function_name;
+            pointer_variable = &array_variable;
+   Example : int arr[0] = show;
+             int arr[1] = showadd();
+             int *ptr = &arr;
+  Example : Practical_15.
+
+** Dangling Pointer :
+   - Pointer which pointes to the address of object which memory already freed or de-allocated is known as Dangling Pointer.
+   - Sometimes programmer fails to initilize the pointer with a valid address, then this type of initilized
+     pointer is known as a Dangling pointer.
+   Example : Practical_17, Practical_18, Practical_19.
+
+  * Avoiding Dangling Pointer Error.
+   - The Dangling Pointer errors can be avoided by initilizing the pointer to the NULL value.
+   - If we assign the NULL value to the pointer, then the pointer will not point to the de-allocated memory.
+   - Assiging NULL value to the  pointer means that the pointer is not pointing to any memory location.
+   Example : Practical_20.
+
+** NULL Pointer :
+     - A NULL pointer is a pointer that does not point to any memory location.
+     - It stores the base address of the of the segment.
+     - The NULL pointer basically stores the NULL value while void is the type of the pointer.
+     - A NULL pointer is a special reserved value which is defined in a stddef header file.
+     - In pointer, NULL means that the pointer is referring to the 0th memory location.
+     - If we do not have any address which is to be assigned to the pointer, then it is known as a
+       NULL Pointer. When NULL value is assigned to the pointer, then it is considered as a NULL pointer.
+
+  * Application of NULL Pointer :
+     - It is used to initilize pointer variable when the pointer does not point to a valid memory address.
+     - It is used to perform error handling with pointers before dereferencing the pointers.
+     - It is passed as a function argument and to return from a function when we do not want to pass the 
+       actual memory address.
+
+  * Syntax for declaration of NULL pointer :
+     1. int *ptr = (int *)0;
+     2. float *ptr =(float *)0;
+     3. char *ptr = (char *)0;
+     4. double *ptr = (double *)0;
+     5. char *ptr = '\0';
+     6. int *ptr = NULL;
+
+  Example : Practical_20, Practical_21, Practical_22.
+
+** sizeof() operator :
+     - The sizeof() operator are used to chack the size of the data type.
+     - The sizeof() operator are also used to check the size of the expression and Data Type.
+     - The sizeof() operator behaves differently according to the type of the operand.
+        - Operand is a data type.
+        - Operand is an Expression.
+
+  * Need of sizeof() operator :
+     - Mainly, programs known the storage size of the primitive data types.
+     - The storage size of the data type constant it varies when implemented in different platform.
+
+** Constant Pointer : const pointer
+     - The Constat Pointer in C cannot change the address of the variable to which it is pointing
+       .i.e the address remain same.
+     - Therefore we can say that if a constant pointer is pointing to same variable, then it cannnot point
+       any other variable.
+  
+  * Syntax of const pointer :
+       <type of pointer> *const <name of pointer>;
+      Example : int *const ptr;
+
+  Example : Practical_25.
+
+** Pointer to Constant :
+     - The Pointer to Constant is pointer through which the value of the variable that the pointer points
+       cannot be changed.
+     - The Address of these pointers can be changed, but the value of the variable that the pointer points
+       cannot be changed.
+
+  * Syntax of Pointer to constant:
+      const <type of pointer> *<name of pointer>;
+     Example : const int *ptr;
+
+  Example : Practical_26, Practical_27.
+
+** Constant Pointer to a Constant :
+     - A Constant Pointer to a Constant is a pointer, which is a combination of Constant Pointer and Pointer
+       to Constant. 
+     - It can neither change the address of the variable to which it is pointing nor it can change
+       the value placed at this address.
+
+  * Syntax of Constant Pointer to Constant :
+      const <type of pointer> *const <name of pointer>;
+     Example : const int *const ptr;
+  
+  Example : Practical_29, Practical_30.
+
+** Void Pointer :
+     - A Void Pointer is a Pointer that can points to any type of data type.
+     - We can assign the address of any data type to the void pointer.
+     - A Pointer can be assigned to any type of the pointer without performing any explicit typecasting is known
+       as 'Void Pointer'.
+
+  * Syntax of Void Pointer :
+      void *<name of pointer>;
+     Example : void *ptr;
+    
+  * Size of void pointer :
+     - The size of void pointer in c is the same as the size of the pointer of character type.
+     - The representation of a pointer to void is same as the pointer to character type.
+     - The size of pointer will vary depending on the platform that you using.
+
+    Example : Practical_31
+  
+  * Advantages of Void Pointer :
+     - The malloc() and calloc() function return the void pointer, so these functions can be used to allocate the memory
+       of any data_type.
+    
+    Example : Practical_34
+
+  * Important Points Related to void pointer :
+     o Dereferencing a Void Pointer :- The void Pointer cannot be dereferenced Directly. 
+                                     Example : Practical_35
+     o Arithmetic Operation on Void Pointer. :- Arithmetic Operation cannot be applied on the Void Pointer.
+                                              - For performing arithmetic operation on the void pointer we have to use proper
+                                                typecasting.
+                                              Example : Practical_36.
+
+  * Use of void pointer :
+     - Use of void pointer is reusability.
+     - void pointer can store the object of any type, and we can retrieve the object of any type by using the indirection operator
+       with proper typecasting.
+    
+    Example : Practical_32, Practical_33, Practical_37.
+
+** Dereferencing Pointer :
+     - The Dereference Pointer is also known as an Indirection Operator.
+     - Indirection Operator is represented by (*).
+     - When Indirection operator is used with the pointer variable, then it is known as dereference a pointer, then
+       the value of the variable pointed by this pointer will be returned.
+  
+  * Use of Dereferencing Pointer :
+     - It can be used to access or manipulate the data stored at the memory location, which is pointed by the pointer.
+     - Any operation applied to the dereferenced pointer will directly affect the value of the variable that it point to.
+    
+  Example : Practical_38, Practical_39, Practical_40, Practical_41, Practical_42.
+

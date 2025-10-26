@@ -1,0 +1,6 @@
+There are three type of Loops in C Language .
+1. do while loop.
+2. while loop.
+3. for loop .
+4. Nested loop.
+5. break statement.
